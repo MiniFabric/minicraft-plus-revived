@@ -423,7 +423,7 @@ public class ResourcePackDisplay extends Display {
 	/**
 	 * The object representation of resource pack.
 	 */
-	private static class ResourcePack implements Closeable {
+	public static class ResourcePack implements Closeable {
 		private URL packRoot;
 
 		/**
