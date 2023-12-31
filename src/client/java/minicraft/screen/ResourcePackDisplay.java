@@ -438,7 +438,7 @@ public class ResourcePackDisplay extends Display {
 		private boolean opened = false; // If the zip file stream is opened.
 		private ZipFile zipFile = null; // The zip file stream.
 
-		private ResourcePack(URL packRoot, int packFormat, String name, String desc) {
+		public ResourcePack(URL packRoot, int packFormat, String name, String desc) {
 			this.packRoot = packRoot;
 			this.packFormat = packFormat;
 			this.name = name;
@@ -487,7 +487,7 @@ public class ResourcePackDisplay extends Display {
 		 *
 		 * @return {@code true} if the stream has successfully been opened.
 		 */
-		private boolean openStream() {
+		public boolean openStream() {
 			try {
 				zipFile = new ZipFile(new File(packRoot.toURI()));
 				return opened = true;
@@ -516,7 +516,7 @@ public class ResourcePackDisplay extends Display {
 		 * @return The input stream of the specified entry.
 		 * @throws IOException if an I/O error has occurred.
 		 */
-		private InputStream getResourceAsStream(String path) throws IOException {
+		public InputStream getResourceAsStream(String path) throws IOException {
 			try {
 				return zipFile.getInputStream(zipFile.getEntry(path));
 			} catch (NullPointerException e) {
@@ -537,7 +537,7 @@ public class ResourcePackDisplay extends Display {
 		 * @return The filtered (if any) subfile and subfolder list. Empty if not or invalid path.
 		 */
 		@NotNull
-		private ArrayList<String> getFiles(String path, FilesFilter filter) {
+		public ArrayList<String> getFiles(String path, FilesFilter filter) {
 			ArrayList<String> paths = new ArrayList<>();
 			for (Enumeration<? extends ZipEntry> e = zipFile.entries(); e.hasMoreElements(); ) {
 				ZipEntry entry = e.nextElement();
